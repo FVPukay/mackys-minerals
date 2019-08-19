@@ -1,3 +1,4 @@
 from django.contrib import admin
+from minerals_app.models import MineralData
 
-# Register your models here.
+admin.site.register(MineralData)
