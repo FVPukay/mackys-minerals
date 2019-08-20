@@ -1,9 +1,8 @@
 from django.db import models
 from django.db.models.functions import Lower
-from django.urls import reverse
 
 
-class MineralData(models.Model):
+class Mineral(models.Model):
     name = models.CharField(max_length=255, unique=True)
     image_filename = models.CharField(max_length=255, unique=True)
     image_caption = models.CharField(max_length=500)

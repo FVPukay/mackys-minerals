@@ -1,10 +1,10 @@
 from django.views.generic import ListView
-from minerals_app.models import MineralData
+from minerals_app.models import Mineral
 
 
-class MineralDataListView(ListView):
-    model = MineralData
+class MineralListView(ListView):
+    model = Mineral
     template_name='minerals_app/index.html'
 
     def get_queryset(self):
-        return MineralData.objects.all()
+        return Mineral.objects.all()

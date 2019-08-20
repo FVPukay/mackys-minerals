@@ -1,4 +1,4 @@
 from django.contrib import admin
-from minerals_app.models import MineralData
+from minerals_app.models import Mineral
 
-admin.site.register(MineralData)
+admin.site.register(Mineral)

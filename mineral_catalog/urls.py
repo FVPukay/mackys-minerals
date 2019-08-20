@@ -19,5 +19,5 @@ from minerals_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.MineralDataListView.as_view(), name='minerals_list'),
+    path('', views.MineralListView.as_view(), name='minerals_list'),
 ]
