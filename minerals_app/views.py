@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from minerals_app.models import MineralData
 
-# Create your views here.
+
+class MineralDataListView(ListView):
+    model = MineralData
+    template_name='minerals_app/index.html'
+
+    def get_queryset(self):
+        return MineralData.objects.all()

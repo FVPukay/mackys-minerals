@@ -1,0 +1,20 @@
+{% extends 'minerals_app/layout.html' %}
+{% block content %}
+
+<div class="grid-100">
+  <ul class="minerals__container">
+    {% for mineral in object_list %}
+      <li>
+        <a class="minerals__anchor" href="#">
+          {% if mineral.name|wordcount <= 2 %}
+            {{ mineral.name|capfirst }}
+          {% else %}
+            {{ mineral.name|capfirst|truncatewords:2 }}
+          {% endif %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}
