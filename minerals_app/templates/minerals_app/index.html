@@ -5,7 +5,7 @@
   <ul class="minerals__container">
     {% for mineral in object_list %}
       <li>
-        <a class="minerals__anchor" href="#">
+        <a class="minerals__anchor" href="{% url 'mineral:detail' pk=mineral.pk %}">
           {% if mineral.name|wordcount <= 2 %}
             {{ mineral.name|capfirst }}
           {% else %}
