@@ -1,4 +1,119 @@
 {% extends 'minerals_app/layout.html' %}
+{% load static %}
 {% block content %}
-
+  <div class="grid-100 mineral__container">
+    <h1 class="mineral__name">{{ object.name }}</h1>
+    <div class="mineral__image-bg">
+    {% with 'images/'|add:object.image_filename as mineral_image %}
+      <img class="mineral__image" src="{% static mineral_image %}" alt="{{ object.image_filename }}">
+    {% endwith %}
+      <p class="mineral__caption">{{ object.image_caption }}</p>
+    </div>
+    <div class="mineral__table-container">
+      <table class="mineral__table">
+        <tbody>
+          <tr>
+            <td class="mineral__category">Group</td>
+            <td>{{ object.group }}</td>
+          </tr>
+          {% if object.formula %}
+            <tr>
+              <td class="mineral__category">Formula</td>
+              <td>{{ object.formula|safe }}</td>
+            </tr>
+          {% endif %}
+          {% if object.category %}
+          <tr>
+            <td class="mineral__category">Category</td>
+            <td>{{ object.category }}</td>
+          </tr>
+          {% endif %}
+          {% if object.strunz_classification %}
+            <tr>
+              <td class="mineral__category">Strunz Classification</td>
+              <td>{{ object.strunz_classification }}</td>
+            </tr>
+          {% endif %}
+          {% if object.crystal_system %}
+            <tr>
+              <td class="mineral__category">Crystal System</td>
+              <td>{{ object.crystal_system }}</td>
+            </tr>
+          {% endif %}
+          {% if object.unit_cell %}
+            <tr>
+              <td class="mineral__category">Unit Cell</td>
+              <td>{{ object.unit_cell }}</td>
+            </tr>
+          {% endif %}
+          {% if object.color %}
+            <tr>
+              <td class="mineral__category">Color</td>
+              <td>{{ object.color }}</td>
+            </tr>
+          {% endif %}
+          {% if object.crystal_symmetry %}
+            <tr>
+              <td class="mineral__category">Crystal Symmetry</td>
+              <td>{{ object.crystal_symmetry }}</td>
+            </tr>
+          {% endif %}
+          {% if object.cleavage %}
+            <tr>
+              <td class="mineral__category">Cleavage</td>
+              <td>{{ object.cleavage }}</td>
+            </tr>
+          {% endif %}
+          {% if object.mohs_scale_hardness %}
+            <tr>
+              <td class="mineral__category">Mohs Scale Hardness</td>
+              <td>{{ object.mohs_scale_hardness }}</td>
+            </tr>
+          {% endif %}
+          {% if object.luster %}
+            <tr>
+              <td class="mineral__category">Luster</td>
+              <td>{{ object.luster }}</td>
+            </tr>
+          {% endif %}
+          {% if object.streak %}
+            <tr>
+              <td class="mineral__category">Streak</td>
+              <td>{{ object.streak }}</td>
+            </tr>
+          {% endif %}
+          {% if object.diaphaneity %}
+            <tr>
+              <td class="mineral__category">Diaphaneity</td>
+              <td>{{ object.diaphaneity }}</td>
+            </tr>
+          {% endif %}
+          {% if object.optical_properties %}
+            <tr>
+              <td class="mineral__category">Optical Properties</td>
+              <td>{{ object.optical_properties }}</td>
+            </tr>
+          {% endif %}
+          {% if object.refractive_index %}
+            <tr>
+              <td class="mineral__category">Refractive Index</td>
+              <td>{{ object.refractive_index }}</td>
+            </tr>
+          {% endif %}
+          {% if object.crystal_habit %}
+            <tr>
+              <td class="mineral__category">Crystal Habit</td>
+              <td>{{ object.crystal_habit }}</td>
+            </tr>
+          {% endif %}
+          {% if object.specific_gravity %}
+            <tr>
+              <td class="mineral__category">Specific Gravity</td>
+              <td>{{ object.specific_gravity }}</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 {% endblock %}
