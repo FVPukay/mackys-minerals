@@ -6,10 +6,10 @@
     {% for mineral in object_list %}
       <li>
         <a class="minerals__anchor" href="{% url 'mineral:detail' pk=mineral.pk %}">
-          {% if mineral.name|wordcount <= 2 %}
+          {% if mineral.name|wordcount <= 1 %}
             {{ mineral.name|capfirst }}
           {% else %}
-            {{ mineral.name|capfirst|truncatewords:2 }}
+            {{ mineral.name|capfirst|truncatewords:1 }}
           {% endif %}
         </a>
       </li>
