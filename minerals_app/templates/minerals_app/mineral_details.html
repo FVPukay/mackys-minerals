@@ -5,7 +5,7 @@
     <h1 class="mineral__name">{{ object.name }}</h1>
     <div class="mineral__image-bg">
     {% with 'images/'|add:object.image_filename as mineral_image %}
-      <img class="mineral__image" src="{% static mineral_image %}" alt="{{ object.image_filename }}">
+      <img class="mineral__image mineral__image-border" src="{% static mineral_image %}" alt="{{ object.image_filename }}">
     {% endwith %}
       <p class="mineral__caption">{{ object.image_caption }}</p>
     </div>
