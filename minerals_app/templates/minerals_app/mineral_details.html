@@ -3,17 +3,17 @@
 {% load mineral_catalog_extras %}
 {% block content %}
   <div class="grid-100 mineral__container">
-    <h1 class="mineral__name">{{ object.name }}</h1>
+    <h1 class="mineral__name">{{ mineral.name }}</h1>
     <div class="mineral__image-bg">
-    {% with 'images/'|add:object.image_filename as mineral_image %}
-      <img class="mineral__image mineral__image-border" src="{% static mineral_image %}" alt="{{ object.image_filename }}">
+    {% with 'images/'|add:mineral.image_filename as mineral_image %}
+      <img class="mineral__image mineral__image-border" src="{% static mineral_image %}" alt="{{ mineral.image_filename }}">
     {% endwith %}
-      <p class="mineral__caption">{{ object.image_caption }}</p>
+      <p class="mineral__caption">{{ mineral.image_caption }}</p>
     </div>
     <div class="mineral__table-container">
       <table class="mineral__table">
         <tbody>
-          {% with mineral_dict=object.pk|mineral_attributes %}
+          {% with mineral_dict=mineral.pk|mineral_attributes %}
           {% for key, value in mineral_dict.items %}
           <tr>
             {% if value %}

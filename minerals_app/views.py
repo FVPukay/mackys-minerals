@@ -14,3 +14,4 @@ class MineralListView(ListView):
 
 class MineralDetailView(DetailView):
     model = Mineral
+    context_object_name = 'mineral'
