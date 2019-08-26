@@ -3,7 +3,7 @@
 
 <div class="grid-100">
   <ul class="minerals__container">
-    {% for mineral in object_list %}
+    {% for mineral in minerals %}
       <li>
         <a class="minerals__anchor" href="{% url 'mineral:detail' pk=mineral.pk %}">
           {% if mineral.name|wordcount <= 1 %}
