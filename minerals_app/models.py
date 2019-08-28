@@ -10,17 +10,23 @@ class Mineral(models.Model):
     group = models.CharField(max_length=500)
 
     formula = models.CharField(max_length=500, default='', blank=True)
-    strunz_classification = models.CharField(max_length=500, default='', blank=True)
+    strunz_classification = models.CharField(
+        max_length=500, default='', blank=True
+    )
     crystal_system = models.CharField(max_length=500, default='', blank=True)
     unit_cell = models.CharField(max_length=500, default='', blank=True)
     color = models.CharField(max_length=500, default='', blank=True)
     crystal_symmetry = models.CharField(max_length=500, default='', blank=True)
     cleavage = models.CharField(max_length=500, default='', blank=True)
-    mohs_scale_hardness = models.CharField(max_length=500, default='', blank=True)
+    mohs_scale_hardness = models.CharField(
+        max_length=500, default='', blank=True
+    )
     luster = models.CharField(max_length=500, default='', blank=True)
     streak = models.CharField(max_length=500, default='', blank=True)
     diaphaneity = models.CharField(max_length=500, default='', blank=True)
-    optical_properties = models.CharField(max_length=500, default='', blank=True)
+    optical_properties = models.CharField(
+        max_length=500, default='', blank=True
+    )
     refractive_index = models.CharField(max_length=500, default='', blank=True)
     crystal_habit = models.CharField(max_length=500, default='', blank=True)
     specific_gravity = models.CharField(max_length=500, default='', blank=True)
