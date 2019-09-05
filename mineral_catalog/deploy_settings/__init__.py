@@ -1,3 +1,5 @@
+import dj_database_url
+
 from mineral_catalog.settings import *
 
 DEBUG = False
@@ -9,3 +11,6 @@ ALLOWED_HOSTS = [
 ]
 
 SECRET_KEY = get_env_variable("SECRET_KEY")
+
+db_from_env = db_database_url.config()
+DATABASES['default'].update(db_from_env)
