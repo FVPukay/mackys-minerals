@@ -13,20 +13,33 @@ def populate_t_database():
     with open('minerals.json') as file:
         file = json.loads(file.read())
 
-    for mineral in file:
+    for mineral in file[:22]:
         mineral_entry = Mineral.objects.get_or_create(**mineral)
 
 
 def random_pk():
-    return int(random.random() * int(Mineral.objects.count()) + 1)
+    """Generate a random integer between 1 and 21 inclusive"""
+    return int(random.random() * 21) + 1
 
 
-class MineralModelTests(TestCase):
+class MineralTests(TestCase):
     def setUp(self):
         populate_t_database()
         self.minerals = Mineral.objects.all()
         self.mineral = get_object_or_404(Mineral, name=u'\u00c5kermanite')
+        self.mineral_1 = get_object_or_404(
+            Mineral,
+            name='Agardite-(Y), Agardite-(Ce), Agardite-(Nd), Agardite-(La)'
+            )
+        self.mineral_2 = get_object_or_404(Mineral, name='Aeschynite-(Y)')
+        self.rand_pk = random_pk()
+        self.mineral_3 = get_object_or_404(Mineral, id=self.rand_pk)
+        self.min_attrs = mineral_catalog_extras.mineral_attributes(
+            self.rand_pk
+        )
 
+
+class MineralModelTests(MineralTests):
     def test_mineral_creation(self):
         self.assertIn(self.mineral, self.minerals)
 
@@ -34,12 +47,7 @@ class MineralModelTests(TestCase):
         self.assertEqual(self.mineral.__str__(), self.mineral.name)
 
 
-class MineralViewsTests(TestCase):
-    def setUp(self):
-        populate_t_database()
-        self.mineral_1 = get_object_or_404(Mineral, name='Baryte (barite)')
-        self.mineral_2 = get_object_or_404(Mineral, name='Ferrierite')
-
+class MineralViewsTests(MineralTests):
     def test_index_view(self):
         response = self.client.get(reverse('minerals_list'))
         self.assertEqual(response.status_code, 200)
@@ -60,28 +68,16 @@ class MineralViewsTests(TestCase):
         self.assertContains(response, "Show random mineral")
 
 
-class RandomMineralTests(TestCase):
-    def setUp(self):
-        populate_t_database()
-        self.rand_pk = random_pk()
-        self.mineral = get_object_or_404(Mineral, id=self.rand_pk)
-
+class RandomMineralTests(MineralTests):
     def test_show_random_mineral(self):
         response = self.client.get(reverse(
             'mineral:detail', kwargs={'pk': self.rand_pk})
         )
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(self.mineral, response.context['mineral'])
+        self.assertEqual(self.mineral_3, response.context['mineral'])
 
 
-class MineralAttributesFilterTests(TestCase):
-    def setUp(self):
-        populate_t_database()
-        self.rand_pk = random_pk()
-        self.min_attrs = mineral_catalog_extras.mineral_attributes(
-            self.rand_pk
-        )
-
+class MineralAttributesFilterTests(MineralTests):
     def test_mineral_attributes(self):
         response = self.client.get(reverse(
             'mineral:detail', kwargs={'pk': self.rand_pk})
