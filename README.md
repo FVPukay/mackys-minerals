@@ -16,7 +16,7 @@ to keep the code dry.
 coverage, and the model, views, urls, templates, context processor, and template filter have been thoroughly tested.
 
 ## Frontend
-* See [mineral_catalog/settings.py](https://github.com/FVPukay/mackys-minerals/blob/master/mineral_catalog/settings.py) - Used [WhiteNoise](https://pypi.org/project/whitenoise/) to display static files using Django on [Heroku](https://www.heroku.com/)
+* See [mineral_catalog/settings.py](https://github.com/FVPukay/mackys-minerals/blob/master/mineral_catalog/settings.py) - Used [WhiteNoise](https://pypi.org/project/whitenoise/) to display static files using [Django](https://www.djangoproject.com/) on [Heroku](https://www.heroku.com/)
 * See [global.css](https://github.com/FVPukay/mackys-minerals/blob/master/minerals_app/static/css/global.css)
     * The border around the mineral images are utilizing a CSS animation.  The duration setting, the amount of time it takes the animation to go from start to finish is 5 seconds, the animation will continuously play, and will alternate between #03001E, #7303C0, #EC38BC, and #FDEFF9.
 * See [Screenshots of Mackey's Minerals](https://www.flickr.com/photos/156561177@N03/albums/72157710579421712)
