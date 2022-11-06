@@ -1,7 +1,8 @@
 # Macky's Minerals
 * Learn more about 871 minerals.  You can either click a mineral and view it's
 image and attributes or you can click "Show random mineral" to view a
-random mineral.
+random mineral
+* This is a [Django](https://www.djangoproject.com/) app
 
 ## Backend
 * See [custom script - populate_database.py](https://github.com/FVPukay/mackys-minerals/blob/master/populate_database.py) that was created to load the minerals from the JSON file into the database
